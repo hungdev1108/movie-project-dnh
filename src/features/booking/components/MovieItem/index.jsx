@@ -1,13 +1,20 @@
 import { Card } from "antd";
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 const { Meta } = Card;
 
 function MovieItem(props) {
-  const { tenPhim, hinhAnh, moTa } = props.item;
+  const { tenPhim, hinhAnh, moTa, maPhim } = props.item;
+  const history = useHistory();
+
+  const goToDetail = () => {
+    history.push("/detail/" + maPhim);
+  };
 
   return (
     <Card
+      onClick={goToDetail}
       hoverable
       cover={
         <img

@@ -1,42 +1,26 @@
-import instance from "api/instance";
 import MovieList from "features/booking/components/MovieList";
-import React, { useState } from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { Pagination } from "antd";
+import { fetchMoviesAction } from "features/booking/action";
 
 function Home() {
   // useDispatch
   const dispatch = useDispatch();
   const [config, setConfig] = useState({
     currentPage: 1,
-    pageSize: 4,
+    pageSize: 8,
     totalCount: 0,
   });
 
+  const changeTotalCount = (total) => {
+    setConfig({ ...config, totalCount: total });
+  };
+
   // Call API
   const fetchMovies = async () => {
-    try {
-      const res = await instance.request({
-        url: "/api/QuanLyPhim/LayDanhSachPhimPhanTrang",
-        method: "GET",
-        params: {
-          maNhom: "GP01",
-          soTrang: config.currentPage,
-          soPhanTuTrenTrang: config.pageSize,
-        },
-      });
-
-      setConfig({
-        ...config,
-        totalCount: res.data.content.totalCount,
-      });
-
-      dispatch({ type: "booking/SET_MOVIES", payload: res.data.content });
-    } catch (err) {
-      console.log(err);
-    }
+    dispatch(fetchMoviesAction(config, changeTotalCount));
   };
 
   // handleChangePage
@@ -51,10 +35,16 @@ function Home() {
   }, [config.currentPage]);
 
   return (
-    <div className="container" style={{ textAlign: "center", fontSize: 22 }}>
-      <h1>Danh sách phim</h1>
-      <MovieList / 
+    <div>
+      <h1 style={{ textAlign: "center", fontSize: 40 }}>Danh sách phim</h1>
+      <MovieList />
       <Pagination
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          marginTop: 30,
+          paddingBottom: 30,
+        }}
         onChange={handleChangePage}
         current={config.currentPage}
         pageSize={config.pageSize}

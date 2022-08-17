@@ -1,4 +1,5 @@
 import produce from "immer";
+import { SET_MOVIES } from "./action";
 
 const initialState = {
   movies: null,
@@ -6,7 +7,7 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case "booking/SET_MOVIES":
+    case SET_MOVIES:
       const nextState = produce(state, (draft) => {
         draft.movies = action.payload;
       });

@@ -16,7 +16,7 @@ function MovieList() {
 
   return (
     <div className="container">
-      <Row gutter={20}>
+      <Row gutter={[20, 20]}>
         {movieInfo.items.map((item) => (
           <Col key={item.maPhim} xs={24} sm={12} md={8} lg={6}>
             <MovieItem item={item} />

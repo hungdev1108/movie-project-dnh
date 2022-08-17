@@ -15,7 +15,7 @@ function App() {
       <Header />
       <Switch>
         <Route path="/" component={Home} exact />
-        <Route path="/detail" component={Detail} />
+        <Route path="/detail/:id" component={Detail} />
         <Route path="/booking" component={Booking} />
         <Route path="/payment" component={Payment} />
         <Route path="/signin" component={Signin} />
