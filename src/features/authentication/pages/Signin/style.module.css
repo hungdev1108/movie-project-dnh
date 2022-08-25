@@ -1,0 +1,27 @@
+.title {
+  font-size: 40px;
+  font-weight: 300;
+  text-align: center;
+}
+
+.form {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.input {
+  margin-bottom: 10px;
+}
+
+.errorText {
+  font-size: 12px;
+  font-style: italic;
+  color: #ff0000;
+  text-align: left;
+  width: 100%;
+}

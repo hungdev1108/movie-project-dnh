@@ -1,4 +1,5 @@
 import bookingReducer from "features/booking/bookingSlice";
+import authReducer from "features/authentication/authSlice";
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 
@@ -6,6 +7,7 @@ const rootReducer = combineReducers({
   // Key booking => Slice (reducer)
   // reducer quản lý nhiều state
   booking: bookingReducer,
+  auth: authReducer,
 });
 
 // middleware: lưu thông tin nhưng action được gửi lên store
